@@ -675,6 +675,7 @@ img { max-width: 100%; }
 /* ========== Science ========== */
 .science {
   background: var(--color-surface);
+  padding-bottom: var(--space-2xl);
 }
 
 .features {
@@ -717,6 +718,7 @@ img { max-width: 100%; }
 /* ========== Decision Graph ========== */
 .decision-graph {
   background: var(--color-bg);
+  padding-top: var(--space-2xl);
 }
 
 .graph-toggle {
