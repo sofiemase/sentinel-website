@@ -50,7 +50,7 @@ function initDecisionGraph() {
     stats: { nodes: 6, phases: 1, switches: 0, contradictions: 0, timeline: '10 minutes' },
     phaseLabels: null,
     walkthrough: {
-      icon: '✅',
+      icon: '',
       title: 'Real Conversation',
       scenario: 'A college student texts their mom asking for $15 for an Uber ride home.',
       overview: 'This is what a <strong>safe, legitimate conversation</strong> looks like through Sentinel AI. The graph is simple, linear, and contains zero red flags. No pressure tactics, no channel switching, no contradictions. The MRI score stays well below 100.',
@@ -151,7 +151,7 @@ function initDecisionGraph() {
       4: { border: '#DC2626', label: 'Crisis' }
     },
     walkthrough: {
-      icon: '💔',
+      icon: '',
       title: 'Romance Scam',
       scenario: 'Margaret, 68, is contacted on Facebook Dating by "James," who claims to be a British architect. After 6 weeks he asks for $12,000.',
       overview: 'Romance scams follow a <strong>predictable 4-phase pattern</strong> that Sentinel AI detects by mapping the full conversation graph. The scammer invests weeks building emotional dependency before manufacturing a crisis that demands money.',
@@ -226,7 +226,7 @@ function initDecisionGraph() {
       4: { border: '#DC2626', label: 'Escalation' }
     },
     walkthrough: {
-      icon: '🛒',
+      icon: '',
       title: 'Retail Scam',
       scenario: 'A user clicks an Instagram ad for 80%-off Nike Air Max shoes. The store looks professional but the product never arrives.',
       overview: 'Fake retail scams use <strong>urgency and social proof</strong> to rush victims through checkout before they can verify the seller. Sentinel AI detects the pattern of fabricated scarcity, stolen product images, and post-purchase disappearance.',
@@ -304,7 +304,7 @@ function initDecisionGraph() {
       4: { border: '#DC2626', label: 'Double Extraction' }
     },
     walkthrough: {
-      icon: '🖥️',
+      icon: '',
       title: 'Tech Support Scam',
       scenario: 'A browser popup warns "YOUR COMPUTER IS INFECTED" with a fake Microsoft logo. The victim calls the number and loses $1,999 in gift cards.',
       overview: 'Tech support scams use <strong>fear and fake authority</strong> to take remote control of victims\' computers. Sentinel AI detects the manufactured panic, impersonation of trusted brands, and escalating financial extraction.',
@@ -393,7 +393,7 @@ function initDecisionGraph() {
       4: { border: '#DC2626', label: 'The Trap' }
     },
     walkthrough: {
-      icon: '📈',
+      icon: '',
       title: 'Investment / Pig Butchering Scam',
       scenario: 'A "wrong number" text leads to a friendship, then a crypto trading opportunity. Over 9 weeks the victim deposits $25,500 into a fake platform.',
       overview: 'Pig butchering scams are the <strong>most financially devastating</strong> fraud type. The scammer "fattens" the victim with fake profits before "slaughtering" — locking funds behind fake fees. Sentinel AI detects the escalating deposit pattern and platform red flags.',
