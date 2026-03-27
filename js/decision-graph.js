@@ -48,7 +48,18 @@ function initDecisionGraph() {
       { source: 5, target: 6, type: 'reply' }
     ],
     stats: { nodes: 6, phases: 1, switches: 0, contradictions: 0, timeline: '10 minutes' },
-    phaseLabels: null
+    phaseLabels: null,
+    walkthrough: {
+      icon: '✅',
+      title: 'Real Conversation',
+      scenario: 'A college student texts their mom asking for $15 for an Uber ride home.',
+      overview: 'This is what a <strong>safe, legitimate conversation</strong> looks like through Sentinel AI. The graph is simple, linear, and contains zero red flags. No pressure tactics, no channel switching, no contradictions. The MRI score stays well below 100.',
+      phases: [
+        { name: 'Single Phase', color: '#27AE60', desc: 'A short, direct exchange — request made, help given, gratitude expressed. The entire conversation takes 10 minutes.' }
+      ],
+      redFlags: [],
+      result: { score: '47 / 1,000', level: 'Low', color: '#27AE60', action: 'Conversation automatically cleared. No interruption to the user.' }
+    }
   };
 
   // ========== 2. ROMANCE SCAM ==========
@@ -138,6 +149,20 @@ function initDecisionGraph() {
       2: { border: '#D97706', label: 'Channel Switch' },
       3: { border: '#EA7B1E', label: 'Deepening' },
       4: { border: '#DC2626', label: 'Crisis' }
+    },
+    walkthrough: {
+      icon: '💔',
+      title: 'Romance Scam',
+      scenario: 'Margaret, 68, is contacted on Facebook Dating by "James," who claims to be a British architect. After 6 weeks he asks for $12,000.',
+      overview: 'Romance scams follow a <strong>predictable 4-phase pattern</strong> that Sentinel AI detects by mapping the full conversation graph. The scammer invests weeks building emotional dependency before manufacturing a crisis that demands money.',
+      phases: [
+        { name: 'Trust Building (Week 1)', color: '#27AE60', desc: 'The scammer builds rapport with compliments, fake credentials, and stolen profile photos. Stories about career and family create a false sense of intimacy.' },
+        { name: 'Channel Switch (Week 2)', color: '#D97706', desc: 'The conversation moves from Facebook to WhatsApp — away from platform safeguards. The scammer refuses video calls with escalating excuses.' },
+        { name: 'Deepening (Weeks 3–5)', color: '#EA7B1E', desc: 'Love declarations, isolation tactics ("don\'t tell anyone"), and forged documents build dependency. IP location contradicts claimed identity.' },
+        { name: 'Crisis (Week 6)', color: '#DC2626', desc: '15 urgent messages in 2 hours. "I need $12,000 for bail TODAY." Guilt, fear, and love weaponized simultaneously.' }
+      ],
+      redFlags: ['Stolen stock photos', 'IP in Nigeria, claims London', 'Refuses video for 6 weeks', '2 channel switches to avoid detection', '8 factual contradictions'],
+      result: { score: '847 / 1,000', level: 'Critical', color: '#DC2626', action: 'AI agent intervenes. Conversation locked. Emergency contact notified. $12,000 saved.' }
     }
   };
 
@@ -199,6 +224,20 @@ function initDecisionGraph() {
       2: { border: '#D97706', label: 'Checkout Pressure' },
       3: { border: '#EA7B1E', label: 'Post-Purchase' },
       4: { border: '#DC2626', label: 'Escalation' }
+    },
+    walkthrough: {
+      icon: '🛒',
+      title: 'Retail Scam',
+      scenario: 'A user clicks an Instagram ad for 80%-off Nike Air Max shoes. The store looks professional but the product never arrives.',
+      overview: 'Fake retail scams use <strong>urgency and social proof</strong> to rush victims through checkout before they can verify the seller. Sentinel AI detects the pattern of fabricated scarcity, stolen product images, and post-purchase disappearance.',
+      phases: [
+        { name: 'Bait (Day 1)', color: '#27AE60', desc: 'Too-good-to-be-true pricing on a social media ad. Professional-looking site with stolen product photos and fabricated 5-star reviews.' },
+        { name: 'Checkout Pressure (Day 1)', color: '#D97706', desc: 'Fake countdown timers, "only 3 left" alerts, and "12 people viewing now" messages create artificial urgency. No secure payment options.' },
+        { name: 'Post-Purchase (Days 2–7)', color: '#EA7B1E', desc: 'A spoofed confirmation email and fake tracking number buy time. Support emails go unanswered. The Instagram account disappears.' },
+        { name: 'Escalation (Day 14+)', color: '#DC2626', desc: 'Item never arrives. The website domain goes offline. Unauthorized charges appear on the victim\'s credit card.' }
+      ],
+      redFlags: ['Stolen product photos', 'Fake countdown timers', 'No PayPal or secure payment', 'Fake tracking number', 'Support channel disappears'],
+      result: { score: '623 / 1,000', level: 'High', color: '#EA7B1E', action: 'User must confirm awareness before proceeding. Verification passcode triggered.' }
     }
   };
 
@@ -263,6 +302,20 @@ function initDecisionGraph() {
       2: { border: '#EA7B1E', label: 'Fake Diagnosis' },
       3: { border: '#D97706', label: 'Payment Extraction' },
       4: { border: '#DC2626', label: 'Double Extraction' }
+    },
+    walkthrough: {
+      icon: '🖥️',
+      title: 'Tech Support Scam',
+      scenario: 'A browser popup warns "YOUR COMPUTER IS INFECTED" with a fake Microsoft logo. The victim calls the number and loses $1,999 in gift cards.',
+      overview: 'Tech support scams use <strong>fear and fake authority</strong> to take remote control of victims\' computers. Sentinel AI detects the manufactured panic, impersonation of trusted brands, and escalating financial extraction.',
+      phases: [
+        { name: 'Initial Scare', color: '#DC2626', desc: 'A full-screen browser popup with alarm sounds impersonates Microsoft. The tab can\'t be closed. A phone number is prominently displayed.' },
+        { name: 'Fake Diagnosis', color: '#EA7B1E', desc: 'The "technician" requests remote access via AnyDesk. Normal Windows logs are presented as critical threats. "Your bank accounts are at risk."' },
+        { name: 'Payment Extraction', color: '#D97706', desc: 'A $199 "protection plan" is offered. While connected, the scammer navigates to the victim\'s banking site and stages a fake $1,999 "accidental refund."' },
+        { name: 'Double Extraction', color: '#DC2626', desc: 'The victim is told to "return the overpayment" via gift cards. Guilt tactics: "I\'ll lose my job." Isolation: "Don\'t tell anyone."' }
+      ],
+      redFlags: ['Fake Microsoft branding', 'Request for remote access', 'Normal logs shown as threats', '"Accidental refund" scheme', 'Gift card payment demanded'],
+      result: { score: '912 / 1,000', level: 'Critical', color: '#DC2626', action: 'AI agent intervenes immediately. Conversation locked. Emergency contact notified.' }
     }
   };
 
@@ -338,6 +391,20 @@ function initDecisionGraph() {
       2: { border: '#D97706', label: 'Platform Setup' },
       3: { border: '#EA7B1E', label: 'Escalating Deposits' },
       4: { border: '#DC2626', label: 'The Trap' }
+    },
+    walkthrough: {
+      icon: '📈',
+      title: 'Investment / Pig Butchering Scam',
+      scenario: 'A "wrong number" text leads to a friendship, then a crypto trading opportunity. Over 9 weeks the victim deposits $25,500 into a fake platform.',
+      overview: 'Pig butchering scams are the <strong>most financially devastating</strong> fraud type. The scammer "fattens" the victim with fake profits before "slaughtering" — locking funds behind fake fees. Sentinel AI detects the escalating deposit pattern and platform red flags.',
+      phases: [
+        { name: 'Social Approach (Weeks 1–2)', color: '#27AE60', desc: 'A casual "wrong number" text or LinkedIn message. The scammer shares luxury lifestyle photos and casually mentions crypto trading success.' },
+        { name: 'Platform Setup (Weeks 3–4)', color: '#D97706', desc: 'Conversation moves to WhatsApp. The scammer demonstrates "profits" with fabricated screenshots and directs the victim to a fake trading platform. First deposit: $500.' },
+        { name: 'Escalating Deposits (Weeks 5–8)', color: '#EA7B1E', desc: 'The platform shows fake gains. "Imagine with $5,000." Then $20,000. The scammer claims to be investing even more. Total deposits climb to $25,500.' },
+        { name: 'The Trap (Week 9+)', color: '#DC2626', desc: 'Withdrawal blocked. "Pay 15% tax to unlock your funds." Victim pays $6,750 "tax" — nothing unlocks. Additional fees demanded. Platform goes offline.' }
+      ],
+      redFlags: ['Unsolicited initial contact', 'Fake trading platform', 'Fabricated profit screenshots', 'Withdrawal blocked by fees', 'Platform disappears with funds'],
+      result: { score: '891 / 1,000', level: 'Critical', color: '#DC2626', action: 'AI agent intervenes. Conversation locked. Emergency contact notified. Pattern flagged to authorities.' }
     }
   };
 
@@ -352,6 +419,56 @@ function initDecisionGraph() {
 
   let currentGraph = 'legitimate';
   let svg, simulation;
+
+  // ========== Walkthrough Panel ==========
+  function renderWalkthrough(data) {
+    const w = data.walkthrough;
+    if (!w) return;
+
+    document.getElementById('walkthroughIcon').textContent = w.icon;
+    document.getElementById('walkthroughTitle').textContent = w.title;
+    document.getElementById('walkthroughScenario').textContent = w.scenario;
+    document.getElementById('walkthroughOverview').innerHTML = '<p>' + w.overview + '</p>';
+
+    // Phases
+    const phasesEl = document.getElementById('walkthroughPhases');
+    if (w.phases.length > 0) {
+      phasesEl.innerHTML = '<h4 class="walkthrough__label">How the scam unfolds</h4>' +
+        w.phases.map(p =>
+          '<div class="walkthrough__phase">' +
+            '<div class="walkthrough__phase-marker" style="background:' + p.color + '"></div>' +
+            '<div>' +
+              '<strong class="walkthrough__phase-name">' + p.name + '</strong>' +
+              '<p class="walkthrough__phase-desc">' + p.desc + '</p>' +
+            '</div>' +
+          '</div>'
+        ).join('');
+    } else {
+      phasesEl.innerHTML = '';
+    }
+
+    // Red flags
+    const statsEl = document.getElementById('walkthroughStats');
+    if (w.redFlags && w.redFlags.length > 0) {
+      statsEl.innerHTML = '<h4 class="walkthrough__label">Red flags detected</h4>' +
+        '<div class="walkthrough__flags">' +
+        w.redFlags.map(f => '<span class="walkthrough__flag">⚠ ' + f + '</span>').join('') +
+        '</div>';
+    } else {
+      statsEl.innerHTML = '<div class="walkthrough__no-flags"><span class="walkthrough__flag walkthrough__flag--safe">✓ No red flags detected</span></div>';
+    }
+
+    // Result
+    const resultEl = document.getElementById('walkthroughResult');
+    resultEl.innerHTML =
+      '<div class="walkthrough__result-card" style="border-left-color:' + w.result.color + '">' +
+        '<div class="walkthrough__result-header">' +
+          '<span class="walkthrough__result-score" style="color:' + w.result.color + '">' + w.result.score + '</span>' +
+          '<span class="walkthrough__result-level" style="background:' + w.result.color + '">' + w.result.level + '</span>' +
+        '</div>' +
+        '<p class="walkthrough__result-action">' + w.result.action + '</p>' +
+      '</div>';
+  }
 
   function createSvg() {
     d3.select('#graphSvg svg').remove();
@@ -381,6 +498,7 @@ function initDecisionGraph() {
   }
 
   function renderGraph(data) {
+    renderWalkthrough(data);
     svg = createSvg();
 
     const g = svg.append('g');
