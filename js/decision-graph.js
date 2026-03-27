@@ -444,8 +444,25 @@ function initDecisionGraph() {
       .attr('stroke-dasharray', d => edgeStyles[d.type].dash)
       .attr('marker-end', d => `url(#arrow-${d.type})`)
       .attr('opacity', 0.6)
-      .on('mouseenter', (event, d) => showTooltip(event, `${d.type.charAt(0).toUpperCase() + d.type.slice(1)} edge`))
-      .on('mouseleave', hideTooltip);
+      .style('cursor', 'pointer')
+      .style('transition', 'opacity 0.15s ease');
+
+    // Edge hover: highlight + thicken
+    link.on('mouseenter', function(event, d) {
+      d3.select(this)
+        .attr('stroke-width', edgeStyles[d.type].width + 2)
+        .attr('opacity', 1);
+      // Dim other edges
+      link.filter(e => e !== d).attr('opacity', 0.2);
+      showTooltip(event, `<strong>${d.type.charAt(0).toUpperCase() + d.type.slice(1)} Edge</strong><br>From node ${d.source.id} to node ${d.target.id}`);
+    })
+    .on('mouseleave', function(event, d) {
+      d3.select(this)
+        .attr('stroke-width', edgeStyles[d.type].width)
+        .attr('opacity', 0.6);
+      link.attr('opacity', 0.6);
+      hideTooltip();
+    });
 
     // Draw nodes
     const nodeR = isSimple ? 12 : 8;
@@ -454,6 +471,7 @@ function initDecisionGraph() {
       .enter()
       .append('g')
       .attr('class', 'node')
+      .style('cursor', 'pointer')
       .call(d3.drag()
         .on('start', dragstarted)
         .on('drag', dragged)
@@ -466,6 +484,7 @@ function initDecisionGraph() {
 
       if (d.type === 'document') {
         el.append('rect')
+          .attr('class', 'node-shape')
           .attr('width', r * 1.4)
           .attr('height', r * 1.4)
           .attr('x', -r * 0.7)
@@ -477,15 +496,18 @@ function initDecisionGraph() {
           .attr('stroke-width', 1.5);
       } else if (d.type === 'switch') {
         el.append('circle')
+          .attr('class', 'node-ring')
           .attr('r', r + 2)
           .attr('fill', 'none')
           .attr('stroke', nodeColors[d.type])
           .attr('stroke-width', 2);
         el.append('circle')
+          .attr('class', 'node-shape')
           .attr('r', r - 1)
           .attr('fill', nodeColors[d.type]);
       } else {
         el.append('circle')
+          .attr('class', 'node-shape')
           .attr('r', r)
           .attr('fill', nodeColors[d.type])
           .attr('stroke', '#fff')
@@ -502,12 +524,60 @@ function initDecisionGraph() {
       }
     });
 
-    // Tooltip on hover
-    node.on('mouseenter', (event, d) => {
+    // Node hover: scale up + highlight connected edges, dim the rest
+    node.on('mouseenter', function(event, d) {
+      const el = d3.select(this);
+      el.raise(); // bring to front
+      el.transition().duration(150)
+        .attr('transform', `translate(${d.x},${d.y}) scale(1.6)`);
+
+      // Highlight connected edges
+      link.each(function(e) {
+        const isConnected = e.source.id === d.id || e.target.id === d.id;
+        d3.select(this)
+          .attr('opacity', isConnected ? 1 : 0.12)
+          .attr('stroke-width', isConnected ? edgeStyles[e.type].width + 1.5 : edgeStyles[e.type].width);
+      });
+
+      // Dim other nodes
+      node.filter(n => n !== d)
+        .transition().duration(150)
+        .style('opacity', function(n) {
+          // Keep connected nodes brighter
+          const connected = edges.some(e =>
+            (e.source.id === d.id && e.target.id === n.id) ||
+            (e.target.id === d.id && e.source.id === n.id)
+          );
+          return connected ? 0.8 : 0.25;
+        });
+
       const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
       showTooltip(event, `<strong>${typeLabel}</strong><br>${d.label}`);
     })
-    .on('mouseleave', hideTooltip);
+    .on('mouseleave', function(event, d) {
+      d3.select(this).transition().duration(150)
+        .attr('transform', `translate(${d.x},${d.y}) scale(1)`);
+
+      // Restore all edges
+      link.attr('opacity', 0.6)
+        .each(function(e) {
+          d3.select(this).attr('stroke-width', edgeStyles[e.type].width);
+        });
+
+      // Restore all nodes
+      node.transition().duration(150).style('opacity', 1);
+
+      hideTooltip();
+    });
+
+    // Node click: show detail popup inside graph container
+    node.on('click', function(event, d) {
+      event.stopPropagation();
+      showNodePopup(d);
+    });
+
+    // Click on background to close popup
+    svg.on('click', () => closeNodePopup());
 
     // Simulation tick
     simulation.on('tick', () => {
@@ -533,6 +603,40 @@ function initDecisionGraph() {
       .attr('fill', '#999')
       .attr('font-size', '12px')
       .text(statsText);
+  }
+
+  // Node detail popup
+  function showNodePopup(d) {
+    closeNodePopup();
+    const typeLabel = d.type.charAt(0).toUpperCase() + d.type.slice(1);
+    const phaseLabel = d.phase ? `Phase ${d.phase}` : '';
+    const color = nodeColors[d.type] || '#333';
+
+    const popup = document.createElement('div');
+    popup.id = 'nodePopup';
+    popup.innerHTML = `
+      <div class="node-popup__header" style="border-left: 4px solid ${color};">
+        <span class="node-popup__type" style="color: ${color};">${typeLabel} Node</span>
+        <button class="node-popup__close" onclick="document.getElementById('nodePopup').remove()">&times;</button>
+      </div>
+      <div class="node-popup__body">
+        <p class="node-popup__label">${d.label}</p>
+        <div class="node-popup__meta">
+          <span class="node-popup__badge" style="background: ${color}20; color: ${color};">ID: ${d.id}</span>
+          ${phaseLabel ? `<span class="node-popup__badge" style="background: ${color}20; color: ${color};">${phaseLabel}</span>` : ''}
+          <span class="node-popup__badge" style="background: ${color}20; color: ${color};">${typeLabel}</span>
+        </div>
+      </div>
+    `;
+    container.appendChild(popup);
+
+    // Animate in
+    requestAnimationFrame(() => popup.classList.add('visible'));
+  }
+
+  function closeNodePopup() {
+    const existing = document.getElementById('nodePopup');
+    if (existing) existing.remove();
   }
 
   // Tooltip
