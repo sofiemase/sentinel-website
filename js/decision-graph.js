@@ -536,19 +536,39 @@ function initDecisionGraph() {
 
     // Phase background labels
     if (hasPhases) {
-      Object.entries(data.phaseLabels).forEach(([phase, info]) => {
-        const px = ((parseInt(phase) - 0.5) / phaseCount) * width;
-        g.append('text')
-          .attr('x', px)
-          .attr('y', 30)
-          .attr('text-anchor', 'middle')
-          .attr('fill', info.border)
-          .attr('font-size', '11px')
-          .attr('font-weight', '700')
-          .attr('letter-spacing', '0.05em')
-          .attr('opacity', 0.7)
-          .text(info.label.toUpperCase());
-      });
+      const isMobile = width < 500;
+      const fontSize = isMobile ? '8px' : '11px';
+      const phaseEntries = Object.entries(data.phaseLabels);
+
+      if (isMobile) {
+        // Stack labels vertically on mobile to avoid overlap
+        phaseEntries.forEach(([phase, info], i) => {
+          g.append('text')
+            .attr('x', 10)
+            .attr('y', 18 + i * 14)
+            .attr('text-anchor', 'start')
+            .attr('fill', info.border)
+            .attr('font-size', fontSize)
+            .attr('font-weight', '700')
+            .attr('letter-spacing', '0.03em')
+            .attr('opacity', 0.7)
+            .text(info.label.toUpperCase());
+        });
+      } else {
+        phaseEntries.forEach(([phase, info]) => {
+          const px = ((parseInt(phase) - 0.5) / phaseCount) * width;
+          g.append('text')
+            .attr('x', px)
+            .attr('y', 30)
+            .attr('text-anchor', 'middle')
+            .attr('fill', info.border)
+            .attr('font-size', fontSize)
+            .attr('font-weight', '700')
+            .attr('letter-spacing', '0.05em')
+            .attr('opacity', 0.7)
+            .text(info.label.toUpperCase());
+        });
+      }
     }
 
     // Draw edges
