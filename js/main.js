@@ -93,20 +93,14 @@ signupForm.addEventListener('submit', (e) => {
   submitBtn.textContent = 'Sending...';
   submitBtn.disabled = true;
 
-  // Send to Google Sheets
-  fetch(GOOGLE_SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ firstName, lastName, email })
-  })
-  .then(() => {
-    // Show success state
+  // Send to Google Sheets via GET (avoids CORS issues)
+  const params = new URLSearchParams({ firstName, lastName, email });
+  const url = GOOGLE_SHEET_URL + '?' + params.toString();
+
+  function showSuccess() {
     signupForm.style.display = 'none';
     signupSuccess.style.display = 'block';
     signupForm.reset();
-
-    // Auto-close after 3 seconds
     setTimeout(() => {
       closeModal();
       setTimeout(() => {
@@ -116,23 +110,11 @@ signupForm.addEventListener('submit', (e) => {
         submitBtn.disabled = false;
       }, 300);
     }, 3000);
-  })
-  .catch(() => {
-    // Still show success (no-cors doesn't return readable response)
-    signupForm.style.display = 'none';
-    signupSuccess.style.display = 'block';
-    signupForm.reset();
+  }
 
-    setTimeout(() => {
-      closeModal();
-      setTimeout(() => {
-        signupForm.style.display = '';
-        signupSuccess.style.display = 'none';
-        submitBtn.textContent = 'Join the waitlist';
-        submitBtn.disabled = false;
-      }, 300);
-    }, 3000);
-  });
+  fetch(url, { mode: 'no-cors' })
+    .then(() => showSuccess())
+    .catch(() => showSuccess());
 });
 
 // ========== Smooth scroll for anchor links ==========
