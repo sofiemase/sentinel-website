@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel AI - Your Last Line of Defense Against Digital Fraud</title>
+  <meta name="description" content="Sentinel AI analyzes conversations in real time and returns a single manipulation risk score - before you make a decision. Think FICO, but for coercion.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%230F6E4A'/><path d='M16 8l-6 4v6l6 6 6-6v-6z' fill='white' opacity='0.9'/></svg>">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <nav class="nav__inner container">
+      <a href="#" class="nav__logo">Sentinel AI</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__links" id="navLinks">
+        <a href="#how-it-works">How it works</a>
+        <a href="#science">For platforms</a>
+        <a href="#decision-graph">Research</a>
+        <a href="#testimonials">Pricing</a>
+        <a href="#" class="nav__signin">Sign in</a>
+        <button class="btn btn--primary btn--sm" id="openSignup">Get early access</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container hero__inner">
+      <div class="hero__badge">Now in private beta</div>
+      <h1 class="hero__title">
+        Your last line of defense against<br>
+        <span class="hero__highlight">digital fraud</span> — before it catches you.
+      </h1>
+      <p class="hero__subtitle">
+        Sentinel AI analyzes conversations in real time and returns a single manipulation risk score — before you make a decision.<br>
+        Think FICO, but for coercion.
+      </p>
+      <div class="hero__ctas">
+        <a href="#cta" class="btn btn--primary">Download the app</a>
+        <a href="#how-it-works" class="btn btn--outline">See how it works</a>
+      </div>
+
+      <!-- Phone Mockups -->
+      <div class="hero__phones">
+        <!-- Left Phone - Safe -->
+        <div class="phone phone--safe">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="phone__header">
+              <span class="phone__brand">Sentinel AI</span>
+              <span class="phone__time">9:41 AM</span>
+            </div>
+            <div class="phone__score-card">
+              <div class="phone__score-label">MRI SCORE</div>
+              <div class="phone__score phone__score--safe">47</div>
+              <div class="phone__score-sub">out of 1,000</div>
+              <div class="phone__score-bar">
+                <div class="phone__score-bar-fill phone__score-bar-fill--safe" style="width: 4.7%"></div>
+                <div class="phone__score-bar-dot" style="left: 4.7%"></div>
+              </div>
+              <div class="phone__score-range">
+                <span>0</span><span>1,000</span>
+              </div>
+              <div class="phone__status phone__status--cleared">Cleared</div>
+            </div>
+            <div class="phone__chart-card">
+              <div class="phone__chart-title">ALL INTERACTIONS</div>
+              <div class="phone__chart-sub">Tap any point &middot; see score &middot; view details</div>
+              <div class="phone__chart">
+                <svg viewBox="0 0 200 60" class="phone__chart-svg phone__chart-svg--safe">
+                  <polyline points="10,50 40,48 70,45 100,47 130,44 160,46 190,43" fill="none" stroke="#27AE60" stroke-width="2"/>
+                  <circle cx="10" cy="50" r="3" fill="#27AE60"/>
+                  <circle cx="40" cy="48" r="3" fill="#27AE60"/>
+                  <circle cx="70" cy="45" r="3" fill="#27AE60"/>
+                  <circle cx="100" cy="47" r="3" fill="#27AE60"/>
+                  <circle cx="130" cy="44" r="3" fill="#27AE60"/>
+                  <circle cx="160" cy="46" r="3" fill="#27AE60"/>
+                  <circle cx="190" cy="43" r="3" fill="#27AE60"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Phone - Critical -->
+        <div class="phone phone--critical">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="phone__header">
+              <span class="phone__brand phone__brand--critical">Sentinel AI</span>
+              <span class="phone__time">9:41 AM</span>
+            </div>
+            <div class="phone__score-card phone__score-card--critical">
+              <div class="phone__score-label">MRI SCORE</div>
+              <div class="phone__score phone__score--critical">847</div>
+              <div class="phone__score-sub">out of 1,000</div>
+              <div class="phone__score-bar">
+                <div class="phone__score-bar-fill phone__score-bar-fill--critical" style="width: 84.7%"></div>
+              </div>
+              <div class="phone__score-range">
+                <span>0</span><span>1,000</span>
+              </div>
+            </div>
+            <div class="phone__chart-card phone__chart-card--critical">
+              <div class="phone__chart-title phone__chart-title--critical">ALL INTERACTIONS</div>
+              <div class="phone__chart-sub phone__chart-sub--critical">Escalating risk over 8 days</div>
+              <div class="phone__chart">
+                <svg viewBox="0 0 200 60" class="phone__chart-svg phone__chart-svg--critical">
+                  <polyline points="10,50 35,45 60,40 85,38 110,30 135,20 160,12 185,8" fill="none" stroke="#DC2626" stroke-width="2"/>
+                  <circle cx="10" cy="50" r="3" fill="#27AE60"/>
+                  <circle cx="35" cy="45" r="3" fill="#27AE60"/>
+                  <circle cx="60" cy="40" r="3" fill="#D97706"/>
+                  <circle cx="85" cy="38" r="3" fill="#D97706"/>
+                  <circle cx="110" cy="30" r="3" fill="#EA7B1E"/>
+                  <circle cx="135" cy="20" r="3" fill="#DC2626"/>
+                  <circle cx="160" cy="12" r="3" fill="#DC2626"/>
+                  <circle cx="185" cy="8" r="3" fill="#DC2626"/>
+                </svg>
+              </div>
+            </div>
+            <div class="phone__alert">
+              <div class="phone__alert-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#DC2626" stroke-width="1.5"/><path d="M8 4v5M8 11v1" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div class="phone__alert-content">
+                <strong>AI agent has intervened</strong>
+                <p>Sentinel AI has paused this conversation. Manipulation risk is critically high.</p>
+              </div>
+              <button class="phone__alert-btn">Review alert</button>
+              <span class="phone__alert-dismiss">Dismiss and proceed at your own risk</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">HOW IT WORKS</span>
+        <h2 class="section__title">Three steps. One score. Before the damage is done.</h2>
+        <p class="section__subtitle">Sentinel AI works silently in the background — no training required, no manual checking.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h3 class="step__title">You receive a message</h3>
+          <p class="step__desc">Sentinel AI monitors your conversations from WhatsApp, Instagram, Facebook, Telegram, and SMS — with your permission. Only your score is ever stored. Never the content.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <h3 class="step__title">Our AI gets to work</h3>
+          <p class="step__desc">In seconds, Sentinel AI assesses the conversation. Powered by a proprietary AI agent that never stops learning — continuously trained on emerging fraud methods so it stays ahead, not behind.</p>
+        </div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <h3 class="step__title">The right action, automatically</h3>
+          <p class="step__desc">Based on the risk score, Sentinel AI's agent takes action — from a quiet cleared tag to a full conversation lock. Calibrated to protect you without interrupting your life.</p>
+        </div>
+      </div>
+
+      <div class="tiers">
+        <h3 class="tiers__title">RESPONSE TIERS — AI AGENT ACTIONS</h3>
+        <div class="tiers__list">
+          <div class="tier tier--low">
+            <span class="tier__range">0 – 300</span>
+            <span class="tier__level">Low</span>
+            <span class="tier__desc">Green cleared tag appears on the conversation. No interruption.</span>
+            <span class="tier__badge tier__badge--low">Cleared</span>
+          </div>
+          <div class="tier tier--medium">
+            <span class="tier__range">301 – 550</span>
+            <span class="tier__level">Medium</span>
+            <span class="tier__desc">AI agent sends an advisory nudge. User is gently alerted to exercise caution.</span>
+            <span class="tier__badge tier__badge--medium">Advisory</span>
+          </div>
+          <div class="tier tier--high">
+            <span class="tier__range">551 – 750</span>
+            <span class="tier__level">High</span>
+            <span class="tier__desc">User must confirm they are aware before proceeding. Friction is intentional.</span>
+            <span class="tier__badge tier__badge--high">Confirm</span>
+          </div>
+          <div class="tier tier--critical">
+            <span class="tier__range">751 – 1000</span>
+            <span class="tier__level">Critical</span>
+            <span class="tier__desc">AI agent intervenes. Conversation locked. Send button disabled. User prompted to review.</span>
+            <span class="tier__badge tier__badge--critical">Locked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Science Behind It -->
+  <section class="section science" id="science">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">THE SCIENCE BEHIND IT</span>
+        <h2 class="section__title">Built to stay ahead of fraud — permanently.</h2>
+        <p class="section__subtitle">Most fraud tools react after the fact. Sentinel AI was designed from the ground up to understand manipulation before it succeeds.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="feature__title">Real-time, not after-the-fact</h3>
+          <p class="feature__desc">Sentinel AI delivers a risk score before you act — not after the money is gone. It runs quietly in the background at a speed that doesn't slow you down.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="feature__title">Proprietary — not a commodity model</h3>
+          <p class="feature__desc">Sentinel AI is not built on a generic AI. Our detection system was developed specifically for human-targeted fraud — making it uniquely hard to replicate or game.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6"/><path d="M2.5 16A10 10 0 0121.5 8"/><path d="M21.5 8A10 10 0 012.5 16"/></svg>
+          </div>
+          <h3 class="feature__title">Always learning, never static</h3>
+          <p class="feature__desc">Fraud evolves daily. So does Sentinel AI. Our AI agent trains continuously on new and emerging scam methods — so the protection you have today is always stronger than yesterday's.</p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <h3 class="feature__title">One score. Infinite context.</h3>
+          <p class="feature__desc">The Manipulation Risk Index distills everything Sentinel AI knows into a single number — 0 to 1,000. Clear enough for anyone to understand instantly. Precise enough for banks, platforms, and courts to act on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decision Graph -->
+  <section class="section decision-graph" id="decision-graph">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">THE DECISION GRAPH</span>
+        <h2 class="section__title">We don't just score the message. We map the entire manipulation.</h2>
+        <p class="section__subtitle">Traditional fraud detection asks: "Did this transaction look suspicious?" Sentinel AI asks: "How did the victim arrive at this decision? What influenced them?"</p>
+      </div>
+
+      <!-- Graph Toggle -->
+      <div class="graph-toggle">
+        <button class="graph-toggle__btn graph-toggle__btn--active" data-graph="legitimate">Legitimate Conversation</button>
+        <button class="graph-toggle__btn" data-graph="scam">Romance Scam Pattern</button>
+      </div>
+
+      <!-- Graph Container -->
+      <div class="graph-container" id="graphContainer">
+        <div class="graph-legend">
+          <div class="graph-legend__section">
+            <strong>Nodes:</strong>
+            <span class="graph-legend__item"><span class="graph-legend__dot graph-legend__dot--message"></span>Message</span>
+            <span class="graph-legend__item"><span class="graph-legend__dot graph-legend__dot--call"></span>Call</span>
+            <span class="graph-legend__item"><span class="graph-legend__dot graph-legend__dot--media"></span>Media</span>
+            <span class="graph-legend__item"><span class="graph-legend__dot graph-legend__dot--document"></span>Document</span>
+            <span class="graph-legend__item"><span class="graph-legend__dot graph-legend__dot--switch"></span>Channel Switch</span>
+          </div>
+          <div class="graph-legend__section">
+            <strong>Edges:</strong>
+            <span class="graph-legend__item"><span class="graph-legend__line graph-legend__line--reply"></span>Reply</span>
+            <span class="graph-legend__item"><span class="graph-legend__line graph-legend__line--pressure"></span>Pressure</span>
+            <span class="graph-legend__item"><span class="graph-legend__line graph-legend__line--contradict"></span>Contradict</span>
+            <span class="graph-legend__item"><span class="graph-legend__line graph-legend__line--build"></span>Build</span>
+          </div>
+        </div>
+        <div id="graphSvg" class="graph-svg"></div>
+        <div class="graph-tooltip" id="graphTooltip"></div>
+      </div>
+
+      <!-- Scoring Categories -->
+      <div class="scoring">
+        <h3 class="scoring__title">Five Signal Categories Power the Score</h3>
+        <div class="scoring__grid">
+          <div class="scoring__card">
+            <div class="scoring__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            </div>
+            <h4>The Story</h4>
+            <p>Narrative integrity — fake credentials, forged documents, implausible claims</p>
+          </div>
+          <div class="scoring__card">
+            <div class="scoring__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h4>The Clock</h4>
+            <p>Urgency patterns — rushed timelines, message bursts, off-hours contact</p>
+          </div>
+          <div class="scoring__card">
+            <div class="scoring__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h4>The Pressure</h4>
+            <p>Emotional manipulation — guilt, fear, scarcity, isolation tactics</p>
+          </div>
+          <div class="scoring__card">
+            <div class="scoring__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+            </div>
+            <h4>The Hop</h4>
+            <p>Platform evasion — conversation crosses channels to avoid detection</p>
+          </div>
+          <div class="scoring__card">
+            <div class="scoring__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h4>The Person</h4>
+            <p>Identity & AI detection — deepfakes, voice cloning, behavioral anomalies</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__tag">EARLY USERS</span>
+        <h2 class="section__title">The people who needed this most</h2>
+      </div>
+
+      <div class="testimonials__grid">
+        <div class="testimonial">
+          <p class="testimonial__quote">"My mother almost sent $12,000 to someone she'd been talking to for three weeks. The score came back 923. She showed it to me instead of sending the money."</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">LM</div>
+            <div>
+              <strong class="testimonial__name">Linda M.</strong>
+              <span class="testimonial__role">Beta user, New Jersey</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial__quote">"I knew something felt off but couldn't explain why. Seeing it all laid out made it real. I blocked the account."</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">JT</div>
+            <div>
+              <strong class="testimonial__name">James T.</strong>
+              <span class="testimonial__role">Beta user, Texas</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial__quote">"What I didn't expect was how calm the app makes you feel. It's not alarming — it's informative. The score just says: here's what's happening. You decide."</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">PR</div>
+            <div>
+              <strong class="testimonial__name">Patricia R.</strong>
+              <span class="testimonial__role">Beta user, Florida</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MRI Score Reference -->
+      <div class="mri-ref">
+        <h3 class="mri-ref__title">MRI SCORE REFERENCE — 0 TO 1,000</h3>
+        <div class="mri-ref__bar">
+          <div class="mri-ref__segment mri-ref__segment--low"></div>
+          <div class="mri-ref__segment mri-ref__segment--medium"></div>
+          <div class="mri-ref__segment mri-ref__segment--high"></div>
+          <div class="mri-ref__segment mri-ref__segment--critical"></div>
+        </div>
+        <div class="mri-ref__labels">
+          <span class="mri-ref__label mri-ref__label--start">0 — safe</span>
+          <span class="mri-ref__label" style="left:30%">300</span>
+          <span class="mri-ref__label" style="left:55%">550</span>
+          <span class="mri-ref__label" style="left:75%">750</span>
+          <span class="mri-ref__label mri-ref__label--end">1,000 — coerced</span>
+        </div>
+        <div class="mri-ref__tiers">
+          <div class="mri-ref__tier mri-ref__tier--low">
+            <span class="mri-ref__tier-range">0 – 300</span>
+            <span class="mri-ref__tier-level">Low</span>
+            <span class="mri-ref__tier-desc">No manipulation detected. Conversation cleared automatically.</span>
+          </div>
+          <div class="mri-ref__tier mri-ref__tier--medium">
+            <span class="mri-ref__tier-range">301 – 550</span>
+            <span class="mri-ref__tier-level">Medium</span>
+            <span class="mri-ref__tier-desc">Some patterns present. Advisory nudge sent to user.</span>
+          </div>
+          <div class="mri-ref__tier mri-ref__tier--high">
+            <span class="mri-ref__tier-range">551 – 750</span>
+            <span class="mri-ref__tier-level">High</span>
+            <span class="mri-ref__tier-desc">Clear signals. User must confirm awareness before continuing.</span>
+          </div>
+          <div class="mri-ref__tier mri-ref__tier--critical">
+            <span class="mri-ref__tier-range">751 – 1,000</span>
+            <span class="mri-ref__tier-level">Critical</span>
+            <span class="mri-ref__tier-desc">AI agent intervenes. Conversation locked. Immediate review required.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner" id="cta">
+    <div class="container">
+      <h2 class="cta-banner__title">Your last line of defense.<br>Before the first dollar moves.</h2>
+      <p class="cta-banner__subtitle">Join the beta. Free for early users. iOS and Android.</p>
+      <div class="cta-banner__buttons">
+        <a href="#" class="btn btn--white">Download for iOS</a>
+        <a href="#" class="btn btn--white-outline">Download for Android</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <h4 class="footer__heading">PRODUCT</h4>
+          <p><strong>Sentinel AI</strong> — MRI Score</p>
+          <p>Score range: <strong>0 &rarr; 1,000</strong></p>
+          <p>Platform: <strong>iOS + Android</strong></p>
+          <p>B2C &rarr; B2B pipeline</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">RAISE</h4>
+          <p>Target: <strong>$1,000,000</strong></p>
+          <p>Structure: <strong>Pre-Money SAFE</strong></p>
+          <p>Valuation cap: <strong>$7M</strong></p>
+          <p>Runway: <strong>18 months</strong></p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">TEAM</h4>
+          <p><strong>Steeve Camara</strong> — CEO</p>
+          <p>Ex-NVIDIA &middot; MENA &middot; 4,000+ startups</p>
+          <p><strong>Sofia</strong> — CTO</p>
+          <p>All IP owned by Sentinel AI</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__logo">Sentinel AI</span>
+        <div class="footer__links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+          <a href="#">For platforms</a>
+        </div>
+        <span class="footer__copy">&copy; 2026 Sentinel AI &middot; Jersey City, NJ &middot; Delaware C-corp</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Signup Modal -->
+  <div class="modal-overlay" id="signupModal">
+    <div class="modal">
+      <button class="modal__close" id="closeSignup" aria-label="Close">&times;</button>
+      <div class="modal__header">
+        <span class="modal__badge">Now in private beta</span>
+        <h2 class="modal__title">Get early access</h2>
+        <p class="modal__subtitle">Be among the first to try Sentinel AI. We'll notify you when your spot is ready.</p>
+      </div>
+      <form class="modal__form" id="signupForm">
+        <div class="modal__field">
+          <label for="firstName">First name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+        </div>
+        <div class="modal__field">
+          <label for="lastName">Last name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+        </div>
+        <div class="modal__field modal__field--full">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+        </div>
+        <button type="submit" class="btn btn--primary modal__submit">Join the waitlist</button>
+      </form>
+      <div class="modal__success" id="signupSuccess" style="display:none;">
+        <div class="modal__success-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#27AE60" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+        </div>
+        <h3>You're on the list!</h3>
+        <p>We'll be in touch soon. Keep an eye on your inbox.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/decision-graph.js" defer></script>
+  <script src="js/mri-gauge.js" defer></script>
+</body>
+</html>

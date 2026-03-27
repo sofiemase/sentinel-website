@@ -1,0 +1,54 @@
+:root {
+  /* Colors */
+  --color-primary: #0F6E4A;
+  --color-accent: #27AE60;
+  --color-surface: #E8F8F0;
+  --color-bg: #FAFCFB;
+  --color-warning: #D97706;
+  --color-high-risk: #EA7B1E;
+  --color-critical: #DC2626;
+  --color-ink: #1A2E24;
+  --color-white: #FFFFFF;
+  --color-border: #E0E0E0;
+
+  /* Typography */
+  --font-family: Arial, Helvetica, sans-serif;
+  --heading-size: 32px;
+  --heading-weight: 700;
+  --tag-size: 11px;
+  --tag-weight: 700;
+  --tag-spacing: 0.1em;
+  --body-size: 14px;
+  --body-size-sm: 13px;
+  --score-size-lg: 52px;
+  --score-size-sm: 38px;
+  --score-weight: 300;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 80px;
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-height: 64px;
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+  --border-radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-phone: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+}
