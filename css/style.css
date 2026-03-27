@@ -543,6 +543,13 @@ img { max-width: 100%; }
   padding: var(--space-xl) var(--space-xl);
 }
 
+.step__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
 .step__number {
   display: inline-flex;
   align-items: center;
@@ -554,13 +561,12 @@ img { max-width: 100%; }
   color: var(--color-primary);
   font-size: var(--body-size);
   font-weight: 700;
-  margin-bottom: var(--space-md);
+  flex-shrink: 0;
 }
 
 .step__title {
   font-size: 16px;
   font-weight: 700;
-  margin-bottom: var(--space-sm);
 }
 
 .step__desc {
